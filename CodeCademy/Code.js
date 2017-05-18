@@ -62,11 +62,48 @@ else
 var myAge = 28;
 var age = prompt("What's your age");
 
+//Scope
+/*
+Variables defined outside a function are accessible anywhere once they have been declared. 
+They are called global variables and their scope is global.
+Variables defined inside a function are local variables. They cannot be accessed outside of that function.
+*/
+
 //delare Function with result printed out
 var divideByThree = function (number) {
     var val = number / 3;
     console.log(val);
 };
 
-//call Function
 divideByThree(35)
+
+
+//delare Function with result returned
+var timesTwo = function(number) {
+    return number * 2;
+};
+
+var newNumber = timesTwo(20)
+console.log(newNumber);
+
+
+///////////////////////////////////////////////////For Loop/////////////////////////////////////////////
+for (var counter = 1; counter < 11; counter++) {
+	console.log(counter);
+}
+
+//Array
+/*
+a. store lists of data
+b. can store different data types at the same time
+c. are ordered so the position of each piece of data is fixed
+ */
+var junk = ['a', 'b', 1, 2]
+console.log(junk)
+
+
+var cities = ["Melbourne", "Amman", "Helsinki", "NYC", "Beijing", "Xuchang"];
+
+for (var i = 0; i < cities.length; i++) {
+    console.log("I would like to visit " + cities[i]);
+}
