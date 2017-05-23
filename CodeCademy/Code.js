@@ -155,7 +155,7 @@ switch(lunch){
 for example, we can put our information and functions
 that use that information in one object.
 
-The object has property and method. Property is like a variable and method is 
+The object has PROPERTY and METHOD. PROPERTY is like a variable and METHOD is 
 like a function associated with an object
 */
 var phonebookEntry = {};
@@ -168,16 +168,66 @@ phonebookEntry.phone = function() {
 
 phonebookEntry.phone();
 
+
 //two ways to create a new objects
-//First - Using object literal notation
+////////First way - Using LITERAL NOTATION//////////
 var myObj = {
     type: 'fancy',
-    disposition: 'sunny'
+    disposition: 'sunny',
+    speak: function(word) {
+        console.log("I fell very " + word);
+    }
 };
-//Second - Using the constructor
+
+////////Second way - Using CONSTRUCTOR NOTATION//////////
 var myObj = new Object();
 myObj["name"] = "Charlie";
 myObj.name = "Charlie";
+/*
+the CONSTRUCTOR can be customized by using function keyword. The customized constructor is "template" from which 
+you can create multiple objects
+*/
+function Person(name,age) {
+  this.name = name;
+  this.age = age;
+  this.species = "Homo Sapiens";
+}
+
+var sally = new Person("Sally Bowles", 39);
+var holden = new Person("Holden Caulfield", 16);
+console.log("sally's species is " + sally.species + " and she is " + sally.age);
+console.log("holden's species is " + holden.species + " and he is " + holden.age);
+
+//Custom constructor can have methods
+function Rectangle(height, width) {
+  this.height = height;
+  this.width = width;
+  this.calcArea = function() {
+      return this.height * this.width;
+  };
+  this.calcPerimeter = function() {
+        return (this.height + this.width) * 2; 
+    ;}
+}
+var rex = new Rectangle(7,3);
+var area = rex.calcArea();
+var perimeter = rex.calcPerimeter();
+
+//difference between defaut constructor and customized constructor
+// 3 lines required to make harry_potter
+var harry_potter = new Object();
+harry_potter.pages = 350;
+harry_potter.author = "J.K. Rowling";
+
+
+// A custom constructor for book
+function Book (pages, author) {
+    this.pages = pages;
+    this.author = author;
+}
+// Use our new constructor to make the_hobbit in one line
+harry_potter_CustomConstructor = new Book(320, "J.R.R. Tolkien");
+
 
 //"this" keyword refer to whichever object called that method. It can be defined before 
 //introducing the object, and thus it works for everyone.
@@ -200,50 +250,83 @@ susan.setAge = setAge;
 susan.setAge(35)
 
 
-/*
-Custom constructor
-Instead of using the Object constructor which is empty and has no properties,
-we can make our own constructor which have properties
-*/
+//all object has a method called .hasOwnProperty()
+var suitcase = {
+    shirt: "Hawaiian"
+};
+
+console.log(suitcase.shorts);
+if (suitcase.hasOwnProperty("shorts") === true) {
+    console.log(suitcase.shorts);
+}
+else {
+    suitcase.shorts = "Hi";
+    console.log(suitcase.shorts)
+}
+
+//Working with all properties that belong to an object by using a for-loop
+//list all property names
+var nyc = {
+    fullName: "New York City",
+    mayor: "Bill de Blasio",
+    population: 8000000,
+    boroughs: 5
+};
+
+for (var property in nyc) {
+    console.log(property)    
+}
+//list all property value
+var nyc = {
+    fullName: "New York City",
+    mayor: "Bill de Blasio",
+    population: 8000000,
+    boroughs: 5
+};
+
+for (var prop in nyc) {
+    console.log(nyc[prop])    
+}
+
+
+///////////////////////////////////////////////////Class/////////////////////////////////////////////
+/*When you make a constructor, you are in fact defining a new CLASS, and OBJECTS with their unique properties and methods 
+can be created from the CLASS.
+The below example creates bob and susan objects from the class Person*/
 function Person(name,age) {
   this.name = name;
   this.age = age;
-  this.species = "Homo Sapiens";
+}
+var bob = new Person("Bob Smith", 30);
+var susan = new Person("Susan Jordan", 35);
+
+/* Add a new method to a particular object but does NOT exist in other objects*/
+function Dog (breed) {
+  this.breed = breed;
 }
 
-var sally = new Person("Sally Bowles", 39);
-var holden = new Person("Holden Caulfield", 16);
-console.log("sally's species is " + sally.species + " and she is " + sally.age);
-console.log("holden's species is " + holden.species + " and he is " + holden.age);
+// here we make buddy and teach him how to bark
+var buddy = new Dog("Golden Retriever");
+buddy.bark = function() {
+  console.log("Woof");
+};
+buddy.bark();
 
-//Custom constructor can have methods
-function Rectangle(height, width) {
-  this.height = height;
-  this.width = width;
-  this.calcArea = function() {
-      return this.height * this.width;
-  };
-  // put our perimeter function here!
-  this.calcPerimeter = function() {
-        return (this.height + this.width) * 2; 
-    ;}
-}
+// here we make snoopy
+var snoopy = new Dog("Beagle");
+// this causes an error, because snoopy doesn't know how to bark!
+snoopy.bark();
 
-var rex = new Rectangle(7,3);
-var area = rex.calcArea();
-var perimeter = rex.calcPerimeter();
+/*To add methods to the CLASS and make the method applicable to all objects, use prototype.
+The below example immediately teaches all Dogs the new method.
+*/
+function Dog (breed) {
+  this.breed = breed;
+};
 
-//difference between defaut constructor and customized constructor
-// 3 lines required to make harry_potter
-var harry_potter = new Object();
-harry_potter.pages = 350;
-harry_potter.author = "J.K. Rowling";
-
-
-// A custom constructor for book
-function Book (pages, author) {
-    this.pages = pages;
-    this.author = author;
-}
-// Use our new constructor to make the_hobbit in one line
-harry_potter_CustomConstructor = new Book(320, "J.R.R. Tolkien");
+// here we make buddy and teach him how to bark
+var buddy = new Dog("golden Retriever");
+Dog.prototype.bark = function() {
+  console.log("Woof");
+};
+buddy.bark();
