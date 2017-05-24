@@ -330,3 +330,20 @@ Dog.prototype.bark = function() {
   console.log("Woof");
 };
 buddy.bark();
+
+/*
+INHERITANCE allows one class to use the methods and the properties of another class.
+Below example makes Emperor class inherit from Penguin class
+*/
+function Penguin(name) {
+    this.name = name;
+    this.numLegs = 2;
+}
+function Emperor(name) {
+    this.name = name;    
+}
+Emperor.prototype = new Penguin()
+
+var emperor = new Emperor("test")
+//print 2
+console.log(emperor.numLegs)
