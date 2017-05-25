@@ -1,9 +1,9 @@
-### JavaScript
+## JavaScript
 
-### jQuery
-## Introducing jQuery
+## jQuery
+### Introducing jQuery
 
-## jQuery Fucntions
+### jQuery Fucntions
 
-## Dynamic HTML
+### Dynamic HTML
 [Manipulating Elements](http://learn.jquery.com/using-jquery-core/manipulating-elements/)
