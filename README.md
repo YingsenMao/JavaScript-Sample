@@ -10,7 +10,18 @@ $(document).ready(function() {
     });
 });
 ```
-where "things to touch" is the HTML element you'll click on, hover over, or otherwise interact with, and "thing to affect" is the HTML element that fades away, change size, or undergoes some other transformation.
+where "things to touch" is the HTML element you'll click on, hover over, or otherwise interact with, and "thing to affect" is the HTML element that fades away, change size, or undergoes some other transformation.  
+  
+Sometimes these elements are one and the same--you might hover over a <div> to change its opacity. Ohter times you might interact with a separate element; for example, you might click on a button to resize a <div>.
+    
+Sometimes if you want an effect to occur right away, without an event like .click() or .hover(), you'll skip the second line in the above:
+```javascript
+$(document).ready(function() {
+    $('thingToAffect').effect();
+})
+```
+  
+
 ### jQuery Fucntions
 
 ### Dynamic HTML
