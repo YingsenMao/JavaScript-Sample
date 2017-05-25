@@ -2,13 +2,14 @@
 
 ## jQuery
 ### Introducing jQuery
+```javascript
 The setup almost always looks like the following:
 $(document).ready(function() {
     $('thingToTouch').event(function() {
         $('thingToAffect').effect();
     });
 });
-
+```
 
 ### jQuery Fucntions
 
