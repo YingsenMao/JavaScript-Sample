@@ -24,7 +24,7 @@ $(document).ready(function() {
 
 ### jQuery Fucntions
 The most basic concept of jQuery is to "select some elements and do something with them". 
-1. select some elements
+1. select some elements  
 jQuery supports most CSS selectors. Below are some examples:
 * Select Elements by ID
 ```javascript
@@ -38,6 +38,17 @@ $(".myId");
 ```javascript
 $("input[name = 'first_name']");
 ```
+2. do something  
+Functions aim at doing something for selected elements based on the event.  
+Below illustrates 'select some elements and do something'.  
+```javascript
+$(selector).event(function() {
+    Do something
+});
+```
+* The $() turns selected element into jQuery object, so that jQuery events can apply on it.
+* event() is a function, and the function(){} within the event() is the action will perform as soon as the event() is triggered.
+
 ### Dynamic HTML
 #### Adding and Removing HTML Elements
 .append() inserts the specified element as the last child of the target element. .prepend() inserts the specified element as the first child of the target element. If we have a div of class .info,
