@@ -51,6 +51,7 @@ $(selector).event(function() {
 * event() is a function, and the function(){} within the event() is the action will perform as soon as the event() is triggered.
 
 ### Dynamic HTML
+Dynamically adding elements to our HTML page is a powerful tool - it lets us modify not only the formatting, but the actual structure of our websites in response to a user's actions.
 #### Adding and Removing HTML Elements
 .append() inserts the specified element as the last child of the target element. .prepend() inserts the specified element as the first child of the target element. If we have a div of class .info,
 ```javascript
