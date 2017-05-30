@@ -107,3 +107,47 @@ $('input:checkbox:checked').val();
 
 [Manipulating Elements](http://learn.jquery.com/using-jquery-core/manipulating-elements/)
 
+### jQuery Events
+Review the basic jQuery setup  
+```javascript
+$(document).ready(function() {
+    $('thingToTouch').event(function() {
+        $('thingToAffect').effect();
+    });
+});
+```
+Below is jQuery Events examples  
+```javascript
+$('div').click(function(){ });
+```
+```javascript
+$('div').hover(function(){ });
+```
+```javascript
+$('div').dblclick(function() {  });
+```
+Create an effect when your mouse is on top of an object, then have that effect vanish when your mouse moved away.
+```javascript
+$('div').hover(
+    function(){
+      $(this).addClass('highlight');
+   },
+   function(){
+      $(this).removeClass('highlight');
+   }
+);
+```
+Make the text box light up when click on it
+```javascript
+$(document).ready(function(){
+    $('input').focus(function(){
+        $(this).css('outline-color', '#FF0000');   
+    })    
+})
+```
+.keydown() event is triggered whenever a key on the keyboard is pressed. It usually used with .animate() effect.
+```javascript
+$(document).ready(function() {
+   $('div').animate({left:'+=10px'},500);
+});
+```
