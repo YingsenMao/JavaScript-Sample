@@ -40,6 +40,7 @@ $("input[name = 'first_name']");
 ```
 2. do something  
 Functions aim at doing something for selected elements based on the event.  
+  
 Below illustrates 'select some elements and do something'.  
 ```javascript
 $(selector).event(function() {
