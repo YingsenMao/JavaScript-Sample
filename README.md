@@ -23,7 +23,21 @@ $(document).ready(function() {
   
 
 ### jQuery Fucntions
-
+The most basic concept of jQuery is to "select some elements and do something with them". 
+1. select some elements
+jQuery supports most CSS selectors. Below are some examples:
+* Select Elements by ID
+```javascript
+$("#myId");
+```
+* Select Elements by Class Name
+```javascript
+$(".myId");
+```
+* Select Elements by Attribute
+```javascript
+$("input[name = 'first_name']");
+```
 ### Dynamic HTML
 #### Adding and Removing HTML Elements
 .append() inserts the specified element as the last child of the target element. .prepend() inserts the specified element as the first child of the target element. If we have a div of class .info,
