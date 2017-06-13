@@ -152,7 +152,7 @@ var myObj = new Object();
 myObj["name"] = "Charlie";
 myObj.name = "Charlie";
 ```
-The **constructor** above can be customized by using function keyword as shown below. When you create constructors, you are in fact defining a new **class**. The **class**(customized constructor) is like a "template" from which you can create multiple objects.
+The **Constructor** above can be customized by using function keyword as shown below. When you create constructors, you are in fact defining a new **Class**. The **Class**(customized constructor) is like a "template" from which you can create multiple objects.
 
 Custom constructor can have methods
 ```javascript
@@ -185,4 +185,112 @@ function Book (pages, author) {
     this.author = author;
 }
 harry_potter_CustomConstructor = new Book(320, "J.R.R. Tolkien");
+```
+
+**this** keyword refer to whichever object called that method. It can be defined **before** introducing the object, and thus it works for everyone.
+```javascript
+var setAge = function (newAge) {
+  this.age = newAge;
+};
+// now we make bob
+var bob = new Object();
+bob.age = 30;
+bob.setAge = setAge;
+  
+bob.setAge(25)
+
+// make susan here and update Susan's age to 35 using the method
+var susan = new Object();
+susan.age = 15;
+susan.setAge = setAge;
+
+susan.setAge(35)
+```
+
+All object has a ```.hasOwnProperty()``` method that returns a **boolean** indicating whether the object has the specified property.
+```javascript
+var suitcase = {
+    shirt: "Hawaiian"
+};
+
+console.log(suitcase.shorts);
+if (suitcase.hasOwnProperty("shorts") === true) {
+    console.log(suitcase.shorts);
+}
+else {
+    suitcase.shorts = "Hi";
+    console.log(suitcase.shorts)
+}
+```
+Loop over **property name** and **property value** for the object.
+```javascript
+var nyc = {
+    fullName: "New York City",
+    mayor: "Bill de Blasio",
+    population: 8000000,
+    boroughs: 5
+};
+
+for (var property in nyc) {
+    console.log(property)    
+}
+//list all property value
+var nyc = {
+    fullName: "New York City",
+    mayor: "Bill de Blasio",
+    population: 8000000,
+    boroughs: 5
+};
+
+for (var prop in nyc) {
+    console.log(nyc[prop])    
+}
+```
+
+Add a new method to a particular object but does NOT exist in other objects.
+```javascript
+function Dog (breed) {
+  this.breed = breed;
+}
+
+// here we make buddy and teach him how to bark
+var buddy = new Dog("Golden Retriever");
+buddy.bark = function() {
+  console.log("Woof");
+};
+buddy.bark();
+
+// here we make snoopy
+var snoopy = new Dog("Beagle");
+// this causes an error, because snoopy doesn't know how to bark!
+snoopy.bark();
+```
+Using **prototype** to add methods to the CLASS and make the method applicable to all objects. The below example immediately teaches all Dogs the new method.
+```javascript
+function Dog (breed) {
+  this.breed = breed;
+};
+
+// here we make buddy and teach him how to bark
+var buddy = new Dog("golden Retriever");
+Dog.prototype.bark = function() {
+  console.log("Woof");
+};
+buddy.bark();
+```
+
+**Inhreitance** allows one class to use the methods and the properties of another class. Below example makes Emperor class inherit from Penguin class
+```javascript
+function Penguin(name) {
+    this.name = name;
+    this.numLegs = 2;
+}
+function Emperor(name) {
+    this.name = name;    
+}
+Emperor.prototype = new Penguin()
+
+var emperor = new Emperor("test")
+//print 2
+console.log(emperor.numLegs)
 ```
