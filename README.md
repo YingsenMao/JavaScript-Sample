@@ -108,7 +108,7 @@ $('input:checkbox:checked').val();
 [Manipulating Elements](http://learn.jquery.com/using-jquery-core/manipulating-elements/)
 
 ### jQuery Events
-Review the basic jQuery setup  
+jQuery events are triggered when users perform some specific actions such click the mouse, hover over page, and type keyboard.
 ```javascript
 $(document).ready(function() {
     $('thingToTouch').event(function() {
@@ -151,3 +151,21 @@ $(document).ready(function() {
    $('div').animate({left:'+=10px'},500);
 });
 ```
+  
+### jQuery Effects
+jQuery effects are 'things to happen' when events are triggered.
+```javascript
+$(document).ready(function() {
+    $('thingToTouch').event(function() {
+        $('thingToAffect').effect();
+    });
+});
+```
+Below are some examples:
+```javascript
+$('div').hide();  
+```
+```javascript
+$('img' ).animate({ top: '+=100px'}, 1000 );
+```
+jQuery UI is a curated set of user interface interactions, effects, widgets, and themes built on the top of the jQuery JavaScript library.[Documentation](http://jqueryui.com/)  
