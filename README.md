@@ -65,3 +65,124 @@ var timesTwo = function(number) {
 var newNumber = timesTwo(20)
 console.log(newNumber);
 ```
+
+### Array and For loop
+Things about the array:
+* store lists of data
+* can store different data types at the same time
+* are ordered so the position of each piece of data is fixed
+```javascript
+var cities = ["Melbourne", "Amman", "Helsinki", "NYC", "Beijing", "Xuchang"];
+
+for (var i = 0; i < cities.length; i++) {
+    console.log("I would like to visit " + cities[i]);
+}
+```
+
+### While
+```javascript
+//below two blocks are same
+var bool = true;
+while(bool) {
+    //do something
+}
+
+var bool = true;
+while(bool === true){
+    //do something
+}
+//you want to run at least one time no matter What
+var loopCondition = false;
+
+do {
+	console.log("I'm gonna stop looping 'cause my condition is " + loopCondition + "!");	
+} while (loopCondition);
+```
+
+### Switch
+```javascript
+var lunch = prompt("What do you want for lunch?","Type your lunch choice here");
+
+switch(lunch){
+  case 'sandwich':
+    console.log("Sure thing! One sandwich, coming up.");
+    break;
+  case 'soup':
+    console.log("Got it! Tomato's my favorite.");
+    break;
+  case 'salad':
+    console.log("Sounds good! How about a caesar salad?");
+    break;
+  case 'pie':
+    console.log("Pie's not a meal!");
+    break;
+  default:
+    console.log("Huh! I'm not sure what " + lunch + " is. How does a sandwich sound?");
+}
+```
+
+### Object and Class
+Using objects, we can store all relevant information in one place, for example, we can put our information and functions that use that information in one object.  
+The object has PROPERTY and METHOD. PROPERTY is like a variable and METHOD is like a function associated with an object. Below is an example:
+```javascript
+var phonebookEntry = {};
+
+phonebookEntry.name = 'Oxnard Montalvo';
+phonebookEntry.number = '(555) 555-5555';
+phonebookEntry.phone = function() {
+  console.log('Calling ' + this.name + ' at ' + this.number + '...');
+};
+
+phonebookEntry.phone();
+```
+There are two ways to create a new Object
+1. Using **LITERAL NOTATION**
+```javascript
+var myObj = {
+    type: 'fancy',
+    disposition: 'sunny',
+    speak: function(word) {
+        console.log("I fell very " + word);
+    }
+};
+```
+2. Using **CONSTRUCTOR NOTATION**
+```javascript
+var myObj = new Object();
+myObj["name"] = "Charlie";
+myObj.name = "Charlie";
+```
+The **constructor** above can be customized by using function keyword as shown below. When you create constructors, you are in fact defining a new **class**. The **class**(customized constructor) is like a "template" from which you can create multiple objects.
+
+Custom constructor can have methods
+```javascript
+function Rectangle(height, width) {
+  this.height = height;
+  this.width = width;
+  this.calcArea = function() {
+      return this.height * this.width;
+  };
+  this.calcPerimeter = function() {
+        return (this.height + this.width) * 2; 
+    ;}
+}
+var rex = new Rectangle(7,3);
+var area = rex.calcArea();
+var perimeter = rex.calcPerimeter();
+```
+
+The defaut constructor and customized constructor that create the same results.
+```javascript
+// default constructor
+var harry_potter = new Object();
+harry_potter.pages = 350;
+harry_potter.author = "J.K. Rowling";
+
+
+// A custommized constructor
+function Book (pages, author) {
+    this.pages = pages;
+    this.author = author;
+}
+harry_potter_CustomConstructor = new Book(320, "J.R.R. Tolkien");
+```
